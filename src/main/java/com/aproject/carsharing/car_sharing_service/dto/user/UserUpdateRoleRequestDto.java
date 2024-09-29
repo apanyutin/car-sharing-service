@@ -5,6 +5,6 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class UserUpdateRoleDto {
-    private String role;
+public class UserUpdateRoleRequestDto {
+    private String roleName;
 }

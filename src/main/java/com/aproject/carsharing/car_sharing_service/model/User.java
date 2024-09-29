@@ -25,6 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @RequiredArgsConstructor
 @Table(name = "users")
 @SQLDelete(sql = "UPDATE users SET is_deleted = TRUE WHERE id = ?")

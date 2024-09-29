@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Data
 @Accessors(chain = true)
-public class UserUpdateDto {
+public class UserUpdateRequestDto {
     @NotBlank(message = "FirstName can't be blank")
     @Length(max = 255, message = "FirstName can't be longer than 255")
     private String firstName;
