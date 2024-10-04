@@ -1,13 +1,11 @@
-package com.aproject.carsharing.car_sharing_service;
+package com.aproject.carsharing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CarSharingServiceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(CarSharingServiceApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(CarSharingServiceApplication.class, args);
+    }
 }
