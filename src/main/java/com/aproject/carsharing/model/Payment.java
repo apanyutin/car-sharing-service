@@ -14,10 +14,12 @@ import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @RequiredArgsConstructor
 @Table(name = "payments")
 public class Payment {
