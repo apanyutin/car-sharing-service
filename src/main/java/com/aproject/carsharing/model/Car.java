@@ -31,7 +31,7 @@ public class Car {
     private String model;
     @Column(nullable = false)
     private String brand;
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private CarType carType;
     @Column(nullable = false)

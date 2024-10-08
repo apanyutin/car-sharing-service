@@ -48,19 +48,19 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         return error.getDefaultMessage();
     }
 
-    @ExceptionHandler(EntityNotFoundException.class)
+    @ExceptionHandler({EntityNotFoundException.class, PaymentTypeNotFoundException.class})
     public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex) {
         return buildError(ex, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(ProfileException.class)
+    @ExceptionHandler({ProfileException.class, RegistrationException.class, RentalException.class})
     public ResponseEntity<Object> handleProfileException(ProfileException ex) {
         return buildError(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(PaymentException.class)
     public ResponseEntity<Object> handleRentalException(RuntimeException ex) {
-        return buildError(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+        return buildError(ex, HttpStatus.CONFLICT);
     }
 
     private ResponseEntity<Object> buildError(Exception ex, HttpStatus status) {
