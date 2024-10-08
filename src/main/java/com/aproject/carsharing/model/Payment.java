@@ -26,7 +26,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2048)
     private String sessionUrl;
     @Column(nullable = false)
     private String sessionId;
@@ -36,10 +36,10 @@ public class Payment {
     @JoinColumn(name = "rental_id", referencedColumnName = "id")
     private Rental rental;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
+    @Column(nullable = false, length = 100)
     private PaymentStatus status;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
+    @Column(nullable = false, length = 100)
     private PaymentType type;
 
     public enum PaymentStatus {

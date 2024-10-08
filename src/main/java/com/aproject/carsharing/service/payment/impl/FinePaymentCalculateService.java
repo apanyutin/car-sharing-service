@@ -1,10 +1,11 @@
 package com.aproject.carsharing.service.payment.impl;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 import com.aproject.carsharing.model.Payment;
 import com.aproject.carsharing.model.Rental;
 import com.aproject.carsharing.service.payment.PaymentCalculateService;
 import java.math.BigDecimal;
-import java.time.Duration;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +20,7 @@ public class FinePaymentCalculateService implements PaymentCalculateService {
 
     @Override
     public BigDecimal calculateAmountToPay(Rental rental) {
-        long days = Duration.between(rental.getReturnDate(), rental.getActualReturnDate()).toDays();
+        long days = DAYS.between(rental.getReturnDate(), rental.getActualReturnDate());
         return rental.getCar().getDailyFee()
                 .multiply(BigDecimal.valueOf(days))
                 .multiply(BigDecimal.valueOf(FINE_MULTIPLIER));
