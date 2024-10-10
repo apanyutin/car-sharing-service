@@ -28,12 +28,6 @@ databaseChangeLog:
             columns:
               - column:
                   name: role_name
-                  value: "ROLE_ADMIN"
-        - insert:
-            tableName: roles
-            columns:
-              - column:
-                  name: role_name
                   value: "ROLE_MANAGER"
         - insert:
             tableName: roles

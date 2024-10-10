@@ -15,4 +15,5 @@ public interface UserMapper {
     User toModel(UserRegistrationRequestDto registrationDto);
 
     void userUpdateFromDto(@MappingTarget User user, UserUpdateRequestDto updateDto);
+
 }

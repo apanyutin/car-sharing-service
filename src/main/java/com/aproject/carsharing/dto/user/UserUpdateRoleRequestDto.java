@@ -1,10 +1,12 @@
 package com.aproject.carsharing.dto.user;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Accessors(chain = true)
+@Getter
+@Setter
 public class UserUpdateRoleRequestDto {
+    @NotBlank(message = "RoleName can't be blank")
     private String roleName;
 }

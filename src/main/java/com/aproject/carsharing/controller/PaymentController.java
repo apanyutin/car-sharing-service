@@ -36,11 +36,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
     private final PaymentService paymentService;
 
-    @PreAuthorize("hasRole('ROLE_CUSTOMER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     @Operation(summary = "Create a new payment",
-            description = "Allows a user's to create a new payment")
+            description = "Allows the customer to create a new payment")
     public PaymentResponseDto createPayment(Authentication authentication,
                                             @RequestBody @Valid PaymentRequestDto requestDto) {
         User user = (User) authentication.getPrincipal();

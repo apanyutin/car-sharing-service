@@ -3,6 +3,7 @@ package com.aproject.carsharing.controller;
 import com.aproject.carsharing.dto.user.UserResponseDto;
 import com.aproject.carsharing.dto.user.UserUpdateRequestDto;
 import com.aproject.carsharing.dto.user.UserUpdateRoleRequestDto;
+import com.aproject.carsharing.dto.user.UserUpdateTgChatIdRequestDto;
 import com.aproject.carsharing.model.User;
 import com.aproject.carsharing.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,7 +37,7 @@ public class UserController {
         return userService.getProfileInfo(user);
     }
 
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PatchMapping("/{id}/role")
     @Operation(summary = "Update user role", description = "Allowed only for manager")
     public UserResponseDto updateRole(@PathVariable @Positive Long id,
@@ -50,5 +51,13 @@ public class UserController {
                                       @Valid @RequestBody UserUpdateRequestDto updateDto) {
         User user = (User) authentication.getPrincipal();
         return userService.updateProfileInfo(user, updateDto);
+    }
+
+    @PatchMapping("/{id}/telegram")
+    @Operation(summary = "Update user telegram chatId", description = "Allowed to all")
+    public UserResponseDto updateTgChatId(
+            @PathVariable @Positive Long id,
+            @RequestBody @Valid UserUpdateTgChatIdRequestDto requestDto) {
+        return userService.updateTgChatId(id, requestDto);
     }
 }

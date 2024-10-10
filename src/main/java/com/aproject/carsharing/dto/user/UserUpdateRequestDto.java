@@ -2,12 +2,12 @@ package com.aproject.carsharing.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-@Data
-@Accessors(chain = true)
+@Getter
+@Setter
 public class UserUpdateRequestDto {
     @NotBlank(message = "FirstName can't be blank")
     @Length(max = 255, message = "FirstName can't be longer than 255")

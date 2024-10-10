@@ -4,6 +4,7 @@ import com.aproject.carsharing.dto.user.UserRegistrationRequestDto;
 import com.aproject.carsharing.dto.user.UserResponseDto;
 import com.aproject.carsharing.dto.user.UserUpdateRequestDto;
 import com.aproject.carsharing.dto.user.UserUpdateRoleRequestDto;
+import com.aproject.carsharing.dto.user.UserUpdateTgChatIdRequestDto;
 import com.aproject.carsharing.exception.EntityNotFoundException;
 import com.aproject.carsharing.exception.ProfileException;
 import com.aproject.carsharing.exception.RegistrationException;
@@ -63,5 +64,12 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
         return userMapper.toDto(userRepository.save(user));
     }
-}
 
+    @Override
+    public UserResponseDto updateTgChatId(Long id, UserUpdateTgChatIdRequestDto updateChatIdDto) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Can't find user by id = " + id));
+        user.setTgChatId(updateChatIdDto.getTgChatId());
+        return userMapper.toDto(userRepository.save(user));
+    }
+}

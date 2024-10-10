@@ -15,6 +15,8 @@ import com.aproject.carsharing.repository.SpecificationBuilder;
 import com.aproject.carsharing.repository.car.CarRepository;
 import com.aproject.carsharing.repository.rental.RentalRepository;
 import com.aproject.carsharing.service.RentalService;
+import com.aproject.carsharing.service.notification.TelegramNotificationService;
+import com.aproject.carsharing.service.notification.message.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +31,7 @@ public class RentalServiceImpl implements RentalService {
     private final RentalRepository rentalRepository;
     private final CarRepository carRepository;
     private final RentalMapper rentalMapper;
+    private final TelegramNotificationService tgNotificationService;
 
     @Transactional
     @Override
@@ -43,7 +46,12 @@ public class RentalServiceImpl implements RentalService {
         }
         car.setInventory(car.getInventory() - 1);
         rental.setCar(car);
-        return rentalMapper.toFullDto(rentalRepository.save(rental));
+        RentalFullResponseDto responseDto = rentalMapper.toFullDto(rentalRepository.save(rental));
+        if (user.getTgChatId() != null) {
+            tgNotificationService.sendNotification(user.getTgChatId(),
+                    Message.getRentalMessageForCustomer(rental));
+        }
+        return responseDto;
     }
 
     @Override
