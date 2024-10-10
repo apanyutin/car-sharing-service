@@ -4,6 +4,7 @@ import com.aproject.carsharing.dto.user.UserRegistrationRequestDto;
 import com.aproject.carsharing.dto.user.UserResponseDto;
 import com.aproject.carsharing.dto.user.UserUpdateRequestDto;
 import com.aproject.carsharing.dto.user.UserUpdateRoleRequestDto;
+import com.aproject.carsharing.dto.user.UserUpdateTgChatIdRequestDto;
 import com.aproject.carsharing.exception.RegistrationException;
 import com.aproject.carsharing.model.User;
 
@@ -16,4 +17,6 @@ public interface UserService {
     UserResponseDto updateProfileInfo(User user, UserUpdateRequestDto updateDto);
 
     UserResponseDto updateRole(Long id, UserUpdateRoleRequestDto updateRoleDto);
+
+    UserResponseDto updateTgChatId(Long id, UserUpdateTgChatIdRequestDto updateRoleDto);
 }

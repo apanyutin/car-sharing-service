@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RentalController {
     private final RentalService rentalService;
 
-    @PreAuthorize("hasRole('ROLE_CUSTOMER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new rental",
@@ -74,7 +74,7 @@ public class RentalController {
         return rentalService.findAllByActiveStatus(searchParameters, pageable);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @GetMapping("/{id}")
     @Operation(summary = "Get rental by id",
             description = "Allows the customer to find a rental by ID")
@@ -84,7 +84,7 @@ public class RentalController {
         return rentalService.findById(user, id);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @PostMapping("/{id}/return")
     @Operation(summary = "Return rental",
             description = "Allows the customer to return a rental")

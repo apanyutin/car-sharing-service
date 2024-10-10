@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
     private final CarService carService;
 
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     @Operation(summary = "Create a new car", description = "Allowed only for manager")
@@ -43,7 +43,7 @@ public class CarController {
         return carService.save(requestDto);
     }
 
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PutMapping("/{id}")
     @Operation(summary = "Update a car by id", description = "Allowed only for manager")
     public CarFullResponseDto update(@PathVariable @Positive Long id,
@@ -51,7 +51,7 @@ public class CarController {
         return carService.update(id, requestDto);
     }
 
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PatchMapping("/{id}")
     @Operation(summary = "Update a car inventory", description = "Allowed only for manager")
     public CarFullResponseDto updateInventory(@PathVariable @Positive Long id,
@@ -71,7 +71,7 @@ public class CarController {
         return carService.getById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a car by id", description = "Allowed only for manager")
