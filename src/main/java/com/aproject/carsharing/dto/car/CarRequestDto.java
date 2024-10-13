@@ -6,10 +6,12 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
+@Accessors(chain = true)
 public class CarRequestDto {
     @NotBlank(message = "The model field can't be blank")
     @Length(max = 255, message = "The model field can't be longer than 255")

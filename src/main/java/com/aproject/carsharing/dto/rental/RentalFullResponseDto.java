@@ -5,9 +5,11 @@ import com.aproject.carsharing.dto.user.UserResponseDto;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Getter
 @Setter
+@Accessors(chain = true)
 public class RentalFullResponseDto {
     private Long id;
     private LocalDate rentalDate;
