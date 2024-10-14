@@ -13,12 +13,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @RequiredArgsConstructor
 @SQLDelete(sql = "UPDATE rentals SET is_deleted = TRUE WHERE id =?")
 @SQLRestriction(value = "is_deleted = FALSE")
