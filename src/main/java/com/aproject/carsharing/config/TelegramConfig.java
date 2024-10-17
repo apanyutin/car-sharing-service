@@ -10,7 +10,6 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 @Configuration
 public class TelegramConfig {
-
     @Value("${telegram.bot.token}")
     private String botToken;
 
