@@ -124,4 +124,4 @@ You can test the API endpoints using Postman. A collection of the requests is pr
 
 ## 📎 Conclusion
 
-The Car Sharing Service API provides a solid foundation for managing car rentals, payments, and user interactions in a car-sharing business. With its scalable architecture and integrations, it's designed to meet the demands of modern car-sharing platforms.
+The Car Sharing Service API provides a solid foundation for managing car rentals, payments, and user interactions in a car-sharing business. With its scalable architecture and integrations, it's designed to meet the demands of modern car-sharing platforms. This backend API was developed as a commissioned project for the online auto parts store https://avp.com.ua.
